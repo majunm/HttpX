@@ -13,7 +13,7 @@ allprojects {
 
 ```
 	dependencies {
-    	        implementation 'com.github.majunm:HttpX:v1.0.0'
+    	        implementation 'com.github.majunm:HttpX:v1.0.0-gamma'
     	}
 ```
 
