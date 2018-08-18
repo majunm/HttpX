@@ -1,0 +1,47 @@
+
+
+// 上传用例
+HttpRequestFactory.uploadFilesII(new UploadReq(result.getImage().getCompressPath())
+                                                     , new ResultCallbackAdapt<HttpCommonObjResp<UploadResp>>() {
+                                                         @Override
+                                                         public void doOnResponse(HttpCommonObjResp<UploadResp> response) {
+                                                             if (response.isSuccess()) {
+                                                                 Tools.showToast(response.msg + response.data.avatar);
+                                                                 UserInfosResp resp = LocalSaveServHelper.getUserInfos(mContext);
+                                                                 if (resp != null) {
+                                                                     resp.avatar = avatar;
+                                                                     LocalSaveServHelper.saveUserInfos(mContext, resp);
+                                                                 }
+                                                             }
+                                                             System.out.println("图片路径=" + response.data.avatar);
+                                                         }
+
+                                                         @Override
+                                                         public void doOnError(ApiException ex) {
+                                                             Tools.showToast(ex.msg);
+                                                             System.out.println("图片路径=" + ex.msg);
+                                                         }
+                                                      mUCallback), new UCallback() {
+                                                                                         IProgress progress = new IProgress(mContext);
+
+                                                                                         @Override
+                                                                                         public void onProgress(long currentLength, long totalLength, float percent) {
+                                                                                             System.out.println("" + currentLength
+                                                                                                     + "\ntotalLength" + totalLength
+                                                                                                     + "\npercent" + percent + "\n线程是:" + Thread.currentThread().getName()
+                                                                                             );
+                                                                                             if (percent == 100) {
+                                                                                                 // progress.cancel();
+                                                                                             } else {
+                                                                                                 progress.start();
+                                                                                             }
+                                                                                         }
+
+                                                                                         @Override
+                                                                                         public void onFail(int errCode, String errMsg) {
+                                                                                             System.out.println("errCode:" + errCode
+                                                                                                     + "\nerrMsg:" + errMsg
+                                                                                                     + "\n线程是:" + Thread.currentThread().getName()
+                                                                                             );
+                                                                                         }
+                                                                                     }, false);

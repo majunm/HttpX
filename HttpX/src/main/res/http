@@ -1,0 +1,23 @@
+#接口基地
+API_BASE_HOST=http://www.wanandroid.com/
+#接口等级,没有不填
+API_HOST_VERSION=
+# api_host = base + hostversion |接口地址
+# 返回提示消息
+MSG=errorMsg
+# 返回码
+CODE=errorCode
+# 返回数据
+DATA=data
+# 默认最大在线缓存时间（秒）
+MAX_AGE_ONLINE=60
+# 默认最大离线缓存时间（秒）
+MAX_AGE_OFFLINE=24 * 60 * 60
+# 缓存大小
+CACHE_MAX_SIZE=CACHE_MAX_SIZE
+# 缓存名称
+CACHE_NAME=HttpCache
+# 默认重试次数
+DEFAULT_RETRY_COUNT=3
+# 默认重试间隔时间（毫秒
+DEFAULT_RETRY_DELAY_MILLIS=3000

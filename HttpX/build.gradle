@@ -1,0 +1,62 @@
+//if (isModule.toBoolean()) {
+//    apply plugin: 'com.android.application'
+//} else {
+//    apply plugin: 'com.android.library'
+//}
+
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+//        if (isModule.toBoolean()) {
+//            multiDexEnabled true //分包
+//            applicationId rootProject.ext.apkpackage
+//            applicationId "kaiqi.cn.httpx"
+//        } else {
+//        }
+//        versionCode 1
+//        versionName "1.0"
+    }
+//    sourceSets {
+//        main {
+//            if (isModule.toBoolean()) {
+//                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+//            } else {
+//                manifest.srcFile 'src/main/AndroidManifest.xml'
+//                //集成开发模式下排除debug文件夹中的所有Java文件
+//                java {
+//                    exclude 'debug/**'
+//                }
+//            }
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    api 'io.reactivex.rxjava2:rxjava:2.+'
+    api 'io.reactivex.rxjava2:rxandroid:2.+'
+    api 'com.squareup.okio:okio:1.13.0'
+
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.google.code.gson:gson:2.8.2'
+    // api project(':viselog') // 日志库,如有需要
+    // api project(':encryptanddecrypt') // 加密解密库,如有需要
+}

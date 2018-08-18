@@ -1,0 +1,6 @@
+# 返回提示消息
+MSG=errorMsg
+# 返回码
+CODE=errorCode
+# 返回数据
+DATA=data

@@ -1,0 +1,22 @@
+
+注册接口
+http://www.wanandroid.com/user/register
+
+{
+	"data": {
+		"collectIds": [],
+		"email": "",
+		"icon": "",
+		"id": 9073,
+		"password": "123456",
+		"token": "",
+		"type": 0,
+		"username": "19910222"
+	},
+	"errorCode": 0,
+	"errorMsg": ""
+}
+
+==============error============
+java.lang.IllegalArgumentException: Non-body HTTP method cannot contain @Body.
+        for method Api.runGetII
