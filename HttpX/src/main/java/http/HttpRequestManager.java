@@ -6,7 +6,9 @@ import android.os.Looper;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.vise.log.ILogImpl;
 import com.vise.log.Logger;
+import com.vise.log.PrintLogIntecepter;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -45,6 +47,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import proxy.IProxy;
 import request.CommonRequest;
 import resp.CommonRespWrapI;
 import resp.CommonRespWrapIs;
@@ -203,6 +206,21 @@ public class HttpRequestManager {
 
     public static HttpRequestManager getInstance() {
         return HttpManagerHolder.INSTANCE;
+    }
+
+    ILogImpl impl;
+    public PrintLogIntecepter mPrintLogIntecepter;
+
+    public HttpRequestManager asPrintLogIntecepter(PrintLogIntecepter mPrintLogIntecepter) {
+        this.mPrintLogIntecepter = mPrintLogIntecepter;
+        return this;
+    }
+
+    public ILogImpl createLogImpl() {
+        if (impl == null) {
+            impl = (ILogImpl) IProxy.of().bind(new ILogImpl(mPrintLogIntecepter));
+        }
+        return impl;
     }
 
     public HttpRequestManager init(Context context) {

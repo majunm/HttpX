@@ -3,6 +3,7 @@ package kaiqi.cn.httpx;
 import android.app.Application;
 
 import com.vise.log.Logger;
+import com.vise.log.PrintLogIntecepter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import http.EncryptFuncs;
 import http.HttpRequestFactory;
 import http.ReqTags;
 import interceptor.HttpInterceptor;
+import kaiqi.cn.httpx.req.RegisterReq;
 //import security.util.AesEncryptionUtil;
 
 public class Ap extends Application {
@@ -77,7 +79,7 @@ public class Ap extends Application {
 
             /**
              * {@link ReqTags}
-             * {@link kaiqi.cn.httpx.req.RegisterReq}
+             * {@link RegisterReq}
              * 请给予tag,否则取消不掉请求,拦截不了加密解密赛~
              */
             @Override
@@ -86,6 +88,12 @@ public class Ap extends Application {
                     // return false; // 你们都同意,我注册第一个不答应
                 }
                 return true; // 同意加密
+            }
+        }).asPrintLogIntecepter(new PrintLogIntecepter() {
+            @Override
+            public void e(String tag, Object obj) {
+                // 在这里可以添加自己喜欢的日志库
+                System.out.println("测试" + tag + "|" + obj);
             }
         }).asSubmmitForm(true); // true = 表单提交 false = json提交
     }

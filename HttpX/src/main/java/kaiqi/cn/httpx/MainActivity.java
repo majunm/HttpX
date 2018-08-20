@@ -1,6 +1,5 @@
 package kaiqi.cn.httpx;
 
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -14,16 +13,12 @@ import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
 import callbacks.ResultCallbackAdapt;
-import config.ResLibConfig;
 import http.ApiException;
 import http.HttpRequestFactory;
 import http.HttpRequestManager;
@@ -68,12 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Type type = new TypeToken<Map<String, Object>>() {
         }.getType();
         Map<String, Object> map = HttpRequestManager.GSON.fromJson(json, type);
-        mContent.setText(map + ""+ Tst.A);
+        mContent.setText(map + "" + Tst.A);
         System.out.println(map);
 
         try {
             InputStream open = getResources().getAssets().open("http");
-             // open = Resources.getSystem().getAssets().open("http"); //获取失败
+            // open = Resources.getSystem().getAssets().open("http"); //获取失败
             // InputStream open = ClassLoader.getSystemResourceAsStream("http");
             Properties properties = new Properties();
             properties.load(open);//is是通过上面获得的输入流

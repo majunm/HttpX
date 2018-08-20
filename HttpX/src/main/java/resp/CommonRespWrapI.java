@@ -28,9 +28,6 @@ public class CommonRespWrapI extends CommonRespWrapIs {
     // 很多东西扔给父类了,....
     public CommonRespWrapI(String currPathPostfix, Handler mHandler, ResultCallback<?> mCallback, ILoadingI mloading, HttpInterceptor mHttpInterceptor) {
         super(currPathPostfix, mHandler, mCallback, mloading, mHttpInterceptor);
-        if (ResLibConfig.DEBUG) {
-            Logger.e(TAG, "#######网络回调函数构造#######");
-        }
     }
 
     public CommonRespWrapI(String requestTag, String currPathPostfix, Handler mHandler, ResultCallback<?> mCallback, ILoadingI mloading, HttpInterceptor mHttpInterceptor, int key) {
