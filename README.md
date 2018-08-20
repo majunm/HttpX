@@ -2,6 +2,7 @@
 
 
 #### 相信大家看关于Retrofit的文章,无不列外,比如以下封装形式
+#### 废话太多,告诉我怎么用[用例](用例.md)
 ```
 public interface UserServiceApi {
     @POST("api/login")
