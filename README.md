@@ -537,6 +537,6 @@ allprojects {
 
 ```
 	dependencies {
-    	        implementation 'com.github.majunm:HttpX:v1.0.0-gammas'
+    	        implementation 'com.github.majunm:HttpX:v1.0.0-gammax'
     	}
 ```
