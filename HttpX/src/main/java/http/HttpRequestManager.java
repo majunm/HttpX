@@ -6,6 +6,7 @@ import android.os.Looper;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.vise.log.ILog;
 import com.vise.log.ILogImpl;
 import com.vise.log.Logger;
 import com.vise.log.PrintLogIntecepter;
@@ -208,7 +209,7 @@ public class HttpRequestManager {
         return HttpManagerHolder.INSTANCE;
     }
 
-    ILogImpl impl;
+    ILog impl;
     public PrintLogIntecepter mPrintLogIntecepter;
 
     public HttpRequestManager asPrintLogIntecepter(PrintLogIntecepter mPrintLogIntecepter) {
@@ -216,9 +217,9 @@ public class HttpRequestManager {
         return this;
     }
 
-    public ILogImpl createLogImpl() {
+    public ILog createLogImpl() {
         if (impl == null) {
-            impl = (ILogImpl) IProxy.of().bind(new ILogImpl(mPrintLogIntecepter));
+            impl = (ILog) IProxy.of().bind(new ILogImpl(mPrintLogIntecepter));
         }
         return impl;
     }
