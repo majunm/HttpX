@@ -1,7 +1,7 @@
 
 ##### 注册请求体
 ```
-@ReqTags("注册")
+@ReqTags("注册") // 日志过滤,取消请求依据
 public class RegisterReq extends CommonRequest {
     public String username;
     public String password;
@@ -18,7 +18,7 @@ public class RegisterReq extends CommonRequest {
 
     @Override
     public String postfix() {
-        return "user/register";
+        return "user/register"; // 请求后缀
     }
 }
 ```
